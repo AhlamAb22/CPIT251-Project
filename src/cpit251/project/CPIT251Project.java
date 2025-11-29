@@ -5,10 +5,8 @@
  */
 package cpit251.project;
 
-/**
- *
- * @author future
- */
+import java.util.Scanner;
+
 public class CPIT251Project {
 
     /**
