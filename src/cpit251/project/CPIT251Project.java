@@ -53,6 +53,17 @@ public class CPIT251Project {
         System.out.println("5. Exit");
         System.out.println("-------------------------------------------------------------");
     }
+    
+// ----------------------- FILE WRITER -----------------------
+    public static void writeToFile(String fileName, String content) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(fileName, true))) {
+            writer.println(content);
+            writer.println("--------------------------------------------------");
+        } catch (Exception e) {
+            System.out.println("Error writing to file: " + fileName);
+        }
+    }
+    
  // ----------------------- ADD CLIENT -----------------------
     private static void addNewClient(Scanner scanner, ClientManager clientManager) {
         System.out.print("Enter client name: ");
@@ -110,4 +121,27 @@ public class CPIT251Project {
 
         bookingManager.viewAllBookings();
     }
+
+    // ----------------------- DELETE BOOKING -----------------------
+    private static void deleteBooking(Scanner scanner, BookingManager bookingManager) {
+        System.out.print("Enter the name of the client whose booking you want to delete: ");
+        String clientName = scanner.nextLine();
+
+        boolean removed = bookingManager.deleteBooking(clientName);
+
+        String output;
+
+        if (removed) {
+            output = "Deleted Booking for Client: " + clientName;
+            System.out.println("Booking deleted successfully!\n");
+        } else {
+            output = "No booking found for client: " + clientName;
+            System.out.println("No booking found for this client.\n");
+        }
+
+        writeToFile("delete_booking.txt", output);
+    }
+}
+
+    
 
