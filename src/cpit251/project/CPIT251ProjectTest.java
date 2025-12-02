@@ -90,8 +90,8 @@ public class CPIT251ProjectTest {
         String clientName2 = "Asala";
         
         // calling the method
-        boolean booking1 = bookingManager.deleteBooking(clientName1); 
-        boolean booking2 = bookingManager.deleteBooking(clientName2);
+        bookingManager.deleteBooking(clientName1); 
+        bookingManager.deleteBooking(clientName2);
         
         // Checking if the booking object is deleted from the array list
         assertTrue(bookingManager.getBookings().isEmpty());
